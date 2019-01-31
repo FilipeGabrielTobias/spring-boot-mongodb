@@ -1,6 +1,7 @@
 package com.filipetobias.sbm.services;
 
 import com.filipetobias.sbm.domain.User;
+import com.filipetobias.sbm.dto.UserDTO;
 import com.filipetobias.sbm.repository.UserRepository;
 import com.filipetobias.sbm.services.exception.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,5 +25,14 @@ public class UserServiceImpl implements UserService {
     public User findById(String id) {
         Optional<User> user = userRepository.findById(id);
         return user.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado!"));
+    }
+
+    @Override
+    public User insert(User user) {
+        return userRepository.insert(user);
+    }
+
+    public User fromDTO(UserDTO userDTO) {
+        return new User(userDTO.getId(), userDTO.getName(), userDTO.getEmail());
     }
 }
