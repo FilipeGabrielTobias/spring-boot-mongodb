@@ -1,5 +1,6 @@
 package com.filipetobias.sbm.domain;
 
+import com.filipetobias.sbm.dto.AuthorDTO;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -9,7 +10,6 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -29,5 +29,5 @@ public class Post implements Serializable {
 
     private String body;
 
-    private User author;
+    private AuthorDTO author;
 }
