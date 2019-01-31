@@ -33,12 +33,25 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public User update(User updateUser) {
+        User exist = findById(updateUser.getId());
+        updateData(exist, updateUser);
+        return userRepository.save(exist);
+    }
+
+    @Override
     public void delete(String id) {
         findById(id);
         userRepository.deleteById(id);
     }
 
+    @Override
     public User fromDTO(UserDTO userDTO) {
         return new User(userDTO.getId(), userDTO.getName(), userDTO.getEmail());
+    }
+
+    private void updateData(User exist, User updateUser) {
+        exist.setName(updateUser.getName());
+        exist.setEmail(updateUser.getEmail());
     }
 }
