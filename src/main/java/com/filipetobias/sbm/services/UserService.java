@@ -13,5 +13,7 @@ public interface UserService {
 
     User insert(User user);
 
+    void delete(String id);
+
     User fromDTO(UserDTO userDTO);
 }
