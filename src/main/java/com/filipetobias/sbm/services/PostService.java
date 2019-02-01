@@ -9,5 +9,7 @@ public interface PostService {
 
     Post findById(String id);
 
-    List<Post> findByTitle(SearchDTO text);
+    List<Post> searchTitle(SearchDTO search);
+
+    List<Post> findByTitle(SearchDTO search);
 }

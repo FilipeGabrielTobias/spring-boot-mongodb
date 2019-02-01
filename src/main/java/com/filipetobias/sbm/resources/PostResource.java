@@ -22,6 +22,12 @@ public class PostResource {
         return ResponseEntity.ok().body(post);
     }
 
+    @PostMapping(value = "/search/simpleQuery")
+    public ResponseEntity<List<Post>> searchTitle(@RequestBody SearchDTO search) {
+        List<Post> posts = postService.searchTitle(search);
+        return ResponseEntity.ok().body(posts);
+    }
+
     @PostMapping(value = "/search")
     public ResponseEntity<List<Post>> findByTitle(@RequestBody SearchDTO search) {
         List<Post> post = postService.findByTitle(search);

@@ -23,6 +23,11 @@ public class PostServiceImpl implements PostService {
     }
 
     @Override
+    public List<Post> searchTitle(SearchDTO search) {
+        return postRepository.searchTitle(search.getText());
+    }
+
+    @Override
     public List<Post> findByTitle(SearchDTO search) {
         return postRepository.findByTitleContaining(search.getText());
     }
