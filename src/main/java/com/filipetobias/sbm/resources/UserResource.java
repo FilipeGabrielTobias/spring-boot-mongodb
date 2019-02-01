@@ -1,5 +1,6 @@
 package com.filipetobias.sbm.resources;
 
+import com.filipetobias.sbm.domain.Post;
 import com.filipetobias.sbm.domain.User;
 import com.filipetobias.sbm.dto.UserDTO;
 import com.filipetobias.sbm.services.UserService;
@@ -52,5 +53,11 @@ public class UserResource {
     public ResponseEntity<Void> delete(@PathVariable String id) {
         userService.delete(id);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping(value = "/{id}/posts")
+    public ResponseEntity<List<Post>> findPosts(@PathVariable  String id) {
+        User user = userService.findById(id);
+        return ResponseEntity.ok().body(user.getPosts());
     }
 }
