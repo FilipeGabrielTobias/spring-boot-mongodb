@@ -3,6 +3,7 @@ package com.filipetobias.sbm.configuration;
 import com.filipetobias.sbm.domain.Post;
 import com.filipetobias.sbm.domain.User;
 import com.filipetobias.sbm.dto.AuthorDTO;
+import com.filipetobias.sbm.dto.CommentDTO;
 import com.filipetobias.sbm.repository.PostRepository;
 import com.filipetobias.sbm.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,8 +37,14 @@ public class Instantiation implements CommandLineRunner {
 
         userRepository.saveAll(Arrays.asList(filipe, bob));
 
+
         Post post1 = new Post(null, sdf.parse("31/01/2019"), "Partiu Viagem!", "Vou viajar para São Paulo!", new AuthorDTO(filipe));
-        Post post2 = new Post(null, sdf.parse("31/01/2019"), "Bora Trabalhar", "Hoje o dia vai ser longo!", new AuthorDTO(filipe));
+        Post post2 = new Post(null, sdf.parse("31/01/2019"), "Bora Trabalhar", "Hoje o dia vai ser longo!", new AuthorDTO(bob));
+
+        CommentDTO c1 = new CommentDTO("Boa viagem!", sdf.parse("01/02/2019"), new AuthorDTO(bob));
+        CommentDTO c2 = new CommentDTO("Valeu!!", sdf.parse("01/02/2019"), new AuthorDTO(filipe));
+
+        post1.getComments().addAll(Arrays.asList(c1, c2));
 
         postRepository.saveAll(Arrays.asList(post1, post2));
 
