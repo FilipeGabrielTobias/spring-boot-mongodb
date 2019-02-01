@@ -1,5 +1,6 @@
 package com.filipetobias.sbm.services;
 
+import com.filipetobias.sbm.domain.Post;
 import com.filipetobias.sbm.domain.User;
 import com.filipetobias.sbm.dto.UserDTO;
 import com.filipetobias.sbm.repository.UserRepository;
@@ -22,7 +23,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User findById(String id) {
+    public Post findById(String id) {
         Optional<User> user = userRepository.findById(id);
         return user.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado!"));
     }

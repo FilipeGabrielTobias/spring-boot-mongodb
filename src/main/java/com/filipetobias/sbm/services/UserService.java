@@ -1,5 +1,6 @@
 package com.filipetobias.sbm.services;
 
+import com.filipetobias.sbm.domain.Post;
 import com.filipetobias.sbm.domain.User;
 import com.filipetobias.sbm.dto.UserDTO;
 
@@ -9,7 +10,7 @@ public interface UserService {
 
     List<User> findAll();
 
-    User findById(String id);
+    Post findById(String id);
 
     User insert(User user);
 
